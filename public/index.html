@@ -97,7 +97,7 @@
 
         <div class="cta-group reveal delay-4">
           <a
-            class="btn btn--primary"
+            class="btn btn--primary js-whatsapp-cta"
             href="https://www.v2automatisagrupos.com/r/wunelu1d"
             target="_blank"
             rel="noopener noreferrer"
@@ -187,7 +187,7 @@
           <h2>Sua próxima compra pode sair pela metade.</h2>
           <p>Entrada gratuita. Vagas limitadas no grupo.</p>
           <a
-            class="btn btn--primary btn--lg"
+            class="btn btn--primary btn--lg js-whatsapp-cta"
             href="https://www.v2automatisagrupos.com/r/wunelu1d"
             target="_blank"
             rel="noopener noreferrer"
@@ -229,6 +229,14 @@
         { threshold: 0.16, rootMargin: "0px 0px -40px 0px" }
       );
       reveals.forEach((el) => observer.observe(el));
+
+      document.querySelectorAll(".js-whatsapp-cta").forEach((cta) => {
+        cta.addEventListener("click", () => {
+          if (typeof fbq === "function") {
+            fbq("track", "Lead");
+          }
+        });
+      });
     </script>
   </body>
 </html>
